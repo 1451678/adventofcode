@@ -6,11 +6,7 @@ with open("9.in") as file:
 def createMap():
     map = []
     for line in lines:
-        l = [int(x) for x in line]
-        row = []
-        for i in range(0, len(l)):
-            row.append(l[i])
-        map.append(row)
+        map.append(list([int(x) for x in line]))
     return map
 
 
