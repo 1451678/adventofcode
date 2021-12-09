@@ -5,15 +5,15 @@ with open("5.in") as file:
     lines = [line.rstrip() for line in lines]
 
 
-def createMap():
-    map = []
+def createGrid():
+    G = []
     for i in range(0, 1000):
         row = [0] * 1000
-        map.append(row)
-    return map
+        G.append(row)
+    return G
 
 
-def fillMap(map, lines, partTwo):
+def fillGrid(G, lines, partTwo):
     for line in lines:
         pattern = "([0-9]*),([0-9]*) -> ([0-9]*),([0-9]*)"
         search = re.search(pattern, line)
@@ -24,46 +24,46 @@ def fillMap(map, lines, partTwo):
         if y1 == y2:
             if x1 <= x2:
                 for i in range(0, x2-x1+1):
-                    map[x1+i][y1] += 1
+                    G[x1+i][y1] += 1
             else:
                 for i in range(0, x1-x2+1):
-                    map[x2+i][y1] += 1
+                    G[x2+i][y1] += 1
         elif x1 == x2:
             if y1 <= y2:
                 for i in range(0, y2-y1+1):
-                    map[x1][y1+i] += 1
+                    G[x1][y1+i] += 1
             else:
                 for i in range(0, y1-y2+1):
-                    map[x1][y2+i] += 1
+                    G[x1][y2+i] += 1
         elif partTwo:
             if (x1 <= x2 and y1 <= y2):
                 for i in range(0, x2-x1+1):
-                    map[x1+i][y1+i] += 1
+                    G[x1+i][y1+i] += 1
             if (x1 <= x2 and y1 >= y2):
                 for i in range(0, x2-x1+1):
-                    map[x1+i][y1-i] += 1
+                    G[x1+i][y1-i] += 1
             if (x1 > x2 and y1 <= y2):
                 for i in range(0, x1-x2+1):
-                    map[x1-i][y1+i] += 1
+                    G[x1-i][y1+i] += 1
             if (x1 > x2 and y1 >= y2):
                 for i in range(0, x1-x2+1):
-                    map[x1-i][y1-i] += 1
-    return map
+                    G[x1-i][y1-i] += 1
+    return G
 
 
-def countOverlapping(map):
+def countOverlapping(G):
     count = 0
     for i in range(0, 1000):
         for j in range(0, 1000):
-            if map[i][j] > 1:
+            if G[i][j] > 1:
                 count += 1
     return count
 
 
 def calculate(partTwo):
-    map = createMap()
-    map = fillMap(map, lines, partTwo)
-    print(countOverlapping(map))
+    G = createGrid()
+    G = fillGrid(G, lines, partTwo)
+    print(countOverlapping(G))
 
 
 # Part 1
