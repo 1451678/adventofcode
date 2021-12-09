@@ -35,10 +35,6 @@ def fillBasin(basinPoints, basinPoint):
         fillBasin(basinPoints, (x, y+1))
 
 
-def removeDuplicates(lst):
-    return [t for t in (set(tuple(i) for i in lst))]
-
-
 # Part 1
 sum = 0
 map = createMap()
