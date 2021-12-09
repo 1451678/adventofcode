@@ -56,7 +56,6 @@ for i in range(0, len(map)):
             basins.append([(i, j)])
 for i in range(0, len(basins)):
     fillBasin(basins[i], basins[i][0])
-basins = removeDuplicates(basins)
 basins.sort(key=lambda s: len(s))
 print(len(basins[len(basins)-1]) * len(basins[len(basins)-2])
       * len(basins[len(basins)-3]))
