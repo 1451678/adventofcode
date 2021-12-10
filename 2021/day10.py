@@ -33,6 +33,8 @@ for line in lines:
             stack.append(line[i])
         elif len(stack) > 0 and luc[line[i]] == stack[len(stack)-1]:
             stack.pop(len(stack)-1)
+        else:
+            break
     if i == len(line)-1:
         for i in range(len(stack)-1, -1, -1):
             score = score * 5 + lup[luc[stack[i]]]
