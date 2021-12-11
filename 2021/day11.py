@@ -18,26 +18,26 @@ def step():
                 flash(x, y)
 
 
-def flash(x1, y1):
+def flash(r1, c1):
     global flashes
-    G[x1][y1] = 0
+    G[r1][c1] = 0
     flashes += 1
     for i in range(-1, 2):
         for j in range(-1, 2):
-            x2 = x1+i
-            y2 = y1+j
-            if x2 >= 0 and x2 < len(G) and y2 >= 0 and y2 < len(G[0]):
-                if G[x2][y2] != 0:
-                    if G[x2][y2] >= 9:
-                        flash(x2, y2)
+            r2 = r1+i
+            c2 = c1+j
+            if r2 >= 0 and r2 < len(G) and c2 >= 0 and c2 < len(G[0]):
+                if G[r2][c2] != 0:
+                    if G[r2][c2] >= 9:
+                        flash(r2, c2)
                     else:
-                        G[x2][y2] += 1
+                        G[r2][c2] += 1
 
 
 def synchronized(G):
-    for x in range(0, len(G)):
-        for y in range(0, len(G[0])):
-            if G[x][y] != 0:
+    for r in range(0, len(G)):
+        for c in range(0, len(G[0])):
+            if G[r][c] != 0:
                 return False
     return True
 

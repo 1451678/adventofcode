@@ -17,45 +17,45 @@ def fillGrid(G, lines, partTwo):
     for line in lines:
         pattern = "([0-9]*),([0-9]*) -> ([0-9]*),([0-9]*)"
         search = re.search(pattern, line)
-        x1 = int(search.group(1))
-        y1 = int(search.group(2))
-        x2 = int(search.group(3))
-        y2 = int(search.group(4))
-        if y1 == y2:
-            if x1 <= x2:
-                for i in range(0, x2-x1+1):
-                    G[x1+i][y1] += 1
+        r1 = int(search.group(1))
+        c1 = int(search.group(2))
+        r2 = int(search.group(3))
+        c2 = int(search.group(4))
+        if c1 == c2:
+            if r1 <= r2:
+                for i in range(0, r2-r1+1):
+                    G[r1+i][c1] += 1
             else:
-                for i in range(0, x1-x2+1):
-                    G[x2+i][y1] += 1
-        elif x1 == x2:
-            if y1 <= y2:
-                for i in range(0, y2-y1+1):
-                    G[x1][y1+i] += 1
+                for i in range(0, r1-r2+1):
+                    G[r2+i][c1] += 1
+        elif r1 == r2:
+            if c1 <= c2:
+                for i in range(0, c2-c1+1):
+                    G[r1][c1+i] += 1
             else:
-                for i in range(0, y1-y2+1):
-                    G[x1][y2+i] += 1
+                for i in range(0, c1-c2+1):
+                    G[r1][c2+i] += 1
         elif partTwo:
-            if (x1 <= x2 and y1 <= y2):
-                for i in range(0, x2-x1+1):
-                    G[x1+i][y1+i] += 1
-            if (x1 <= x2 and y1 >= y2):
-                for i in range(0, x2-x1+1):
-                    G[x1+i][y1-i] += 1
-            if (x1 > x2 and y1 <= y2):
-                for i in range(0, x1-x2+1):
-                    G[x1-i][y1+i] += 1
-            if (x1 > x2 and y1 >= y2):
-                for i in range(0, x1-x2+1):
-                    G[x1-i][y1-i] += 1
+            if (r1 <= r2 and c1 <= c2):
+                for i in range(0, r2-r1+1):
+                    G[r1+i][c1+i] += 1
+            if (r1 <= r2 and c1 >= c2):
+                for i in range(0, r2-r1+1):
+                    G[r1+i][c1-i] += 1
+            if (r1 > r2 and c1 <= c2):
+                for i in range(0, r1-r2+1):
+                    G[r1-i][c1+i] += 1
+            if (r1 > r2 and c1 >= c2):
+                for i in range(0, r1-r2+1):
+                    G[r1-i][c1-i] += 1
     return G
 
 
 def countOverlapping(G):
     count = 0
-    for i in range(0, 1000):
-        for j in range(0, 1000):
-            if G[i][j] > 1:
+    for r in range(0, 1000):
+        for c in range(0, 1000):
+            if G[r][c] > 1:
                 count += 1
     return count
 

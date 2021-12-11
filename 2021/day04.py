@@ -23,11 +23,11 @@ def buildBoards(lines):
 
 
 def checkWinH(board, winners):
-    for i in range(len(board)):
+    for r in range(len(board)):
         result = True
-        line = board[i]
-        for j in range(len(line)):
-            number = line[j]
+        column = board[r]
+        for i in range(len(column)):
+            number = column[i]
             if number not in winners:
                 result = False
                 break
@@ -37,10 +37,10 @@ def checkWinH(board, winners):
 
 
 def checkWinV(board, winners):
-    for i in range(len(board)):
+    for c in range(len(board)):
         result = True
-        for j in range(len(board)):
-            number = board[j][i]
+        for r in range(len(board)):
+            number = board[r][c]
             if number not in winners:
                 result = False
                 break
@@ -51,9 +51,9 @@ def checkWinV(board, winners):
 
 def sumUnmarked(board, winners):
     sum = 0
-    for i in range(len(board)):
-        for j in range(len(board)):
-            number = board[i][j]
+    for c in range(len(board)):
+        for r in range(len(board)):
+            number = board[c][r]
             if number not in winners:
                 sum += number
     return sum
