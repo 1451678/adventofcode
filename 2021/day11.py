@@ -47,7 +47,6 @@ fillGrid()
 flashes = 0
 for i in range(0, 100):
     step()
-    all = True
 print(flashes)
 
 # Part 2
