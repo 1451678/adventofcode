@@ -52,10 +52,8 @@ print(flashes)
 # Part 2
 G = []
 fillGrid()
-isSynchronized = False
 steps = 0
-while not isSynchronized:
+while not synchronized(G):
     step()
     steps += 1
-    isSynchronized = synchronized(G)
 print(steps)
