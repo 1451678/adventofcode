@@ -9,13 +9,13 @@ def fillGrid():
 
 
 def step():
-    for x in range(0, len(G)):
-        for y in range(0, len(G[0])):
-            G[x][y] += 1
-    for x in range(0, len(G)):
-        for y in range(0, len(G[0])):
-            if G[x][y] > 9:
-                flash(x, y)
+    for r in range(0, len(G)):
+        for c in range(0, len(G[0])):
+            G[r][c] += 1
+    for r in range(0, len(G)):
+        for c in range(0, len(G[0])):
+            if G[r][c] > 9:
+                flash(r, c)
 
 
 def flash(r1, c1):
